@@ -1,5 +1,4 @@
 # wlemus-datamart
-Resultados de la prueba tecnica
 
 ## [PYTHON](PruebaDataMart_py/)
 * ### EJERCICIO 1 
