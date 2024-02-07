@@ -12,7 +12,7 @@ namespace PruebaDataMart_net.BinaryTree
         public  Node? root { get; set; }
         public int length { get; set; }
         static readonly int COUNT = 5;
-
+        private StringBuilder stringTree;
         #region "INSERT NODE"
         //**************************************INSERT NODE *********************************************
         public void InsertNode(int value )
@@ -92,29 +92,32 @@ namespace PruebaDataMart_net.BinaryTree
         #region "PRINT TREE"
         //**************************************PRINT TREE *********************************************
 
-        public void PrintTree()
+        public string PrintTree()
         {
+            stringTree = new StringBuilder();
             // Pass initial space count as 0
             PrintTreeRecursive(root, 0);
+            return stringTree.ToString();
         }
 
-         private void PrintTreeRecursive(Node root, int space)
+         private void PrintTreeRecursive(Node CurrentNode, int space)
         {
-            if (root != null)
-            {
-                space += COUNT; //Increase distance between levels
+            if (CurrentNode == null)
+                return;
+               space += COUNT; //Increase distance between levels
                                 
-                PrintTreeRecursive(root.rightChild, space); //Process right child
+                PrintTreeRecursive(CurrentNode.rightChild, space); //Process right child
 
-                // Print current node after space
-                Console.Write("\n");
+            // Print current node after space
+            stringTree.Append("\n");
                 for (int i = COUNT; i < space; i++)
-                    Console.Write(" ");
+                stringTree.Append(" ");
 
-                Console.Write(root.value + "\n");
+            stringTree.Append(CurrentNode.value + (CurrentNode.isRoot?"->":"") + "\n");
 
-                PrintTreeRecursive(root.leftChild, space); //Process left child
-            }           
+                PrintTreeRecursive(CurrentNode.leftChild, space); //Process left child
+          
+            
         }
         #endregion
 

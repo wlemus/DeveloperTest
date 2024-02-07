@@ -79,10 +79,10 @@ namespace PruebaTest
         public void TestSearchNode_WhenValueExistsInTree_ShouldReturnNode()
         {
             BinaryTree tree = new BinaryTree();
-            tree.InsertNode(5); // Insert root node
-            tree.InsertNode(3); // Insert left child
-            tree.InsertNode(8); // Insert right child
-            int value = 3; // Value to search
+            tree.InsertNode(5); 
+            tree.InsertNode(3); 
+            tree.InsertNode(8); 
+            int value = 3; 
 
             Node? result = tree.SearchNode(value);
 
@@ -96,14 +96,33 @@ namespace PruebaTest
         public void TestSearchNode_WhenValueDoesNotExistInTree_ShouldReturnNull()
         {
             BinaryTree tree = new BinaryTree();
-            tree.InsertNode(5); // Insert root node
-            tree.InsertNode(3); // Insert left child
-            tree.InsertNode(8); // Insert right child
-            int value = 10; // Value not present in tree
+            tree.InsertNode(5); 
+            tree.InsertNode(3); 
+            tree.InsertNode(8); 
+            int value = 10; 
 
             Node? result = tree.SearchNode(value);
 
             Assert.That(result, Is.Null);
+        }
+        #endregion
+        #region "PRINT TREE"
+        [Test]
+        public void TestSearchNode_Print_ShouldReturnTree()
+        {
+            BinaryTree tree = new BinaryTree();
+            tree.InsertNode(5); 
+            tree.InsertNode(30); 
+            tree.InsertNode(2);
+            tree.InsertNode(40);
+            tree.InsertNode(25);
+            tree.InsertNode(4);
+
+            string stringTree= tree.PrintTree();
+
+            Assert.That(stringTree, Is.Not.Null);
+            Assert.That(stringTree, Is.Not.Empty);
+            System.Diagnostics.Debug.WriteLine(stringTree);
         }
         #endregion
     }
